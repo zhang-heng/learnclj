@@ -106,3 +106,19 @@
 ;; 100000000
 ;; 100000000
 ;;结果是AtomicInteger要强
+
+(def ag (agent 0))
+(deref ag)
+(send ag + 1 1 1 1)
+(send-off ag inc)
+(future
+  (do (Thread/sleep 3000)
+      (send ag inc)))
+
+(send ag #(do (Thread/sleep 1000)
+                  (inc %)))
+
+(do (send ag #(do (Thread/sleep 1000)
+                  (inc %)))
+    (await ag)
+    @ag)

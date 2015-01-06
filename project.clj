@@ -19,7 +19,10 @@
                  [com.novemberain/langohr "3.0.1"]
 
                  ;;Neo4J REST API on clojure
-                 [clojurewerkz/neocons "3.0.0"]]
+                 [clojurewerkz/neocons "3.0.0"]
+
+                 ;;ClojureScript
+                 [org.clojure/clojurescript "0.0-2665"]]
 
   :profiles {:dev {:main learnclj.core}
              :jar {:main learnclj.core}
