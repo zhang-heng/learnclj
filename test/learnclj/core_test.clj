@@ -2,6 +2,5 @@
   (:require [clojure.test :refer :all]
             [learnclj.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest test-1
+  (testing "fix me" (is (= "hello, a" (hello "a")))))

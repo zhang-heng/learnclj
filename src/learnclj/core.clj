@@ -7,5 +7,12 @@
 ;;修改插件源码:./packs/stable/clojure-pack/lib/cider/cider-interaction.el
 ;;            line 1337  +(cider-repl-set-ns (cider-current-ns))
 
+;;可以声明函数
+(defn hello [name])
+
+;;用于服务框架的主函数
 (defn -main []
-  (prn "hello world"))
+  (hello "kay"))
+
+(defn hello [name]
+  (str "hello, " name))
