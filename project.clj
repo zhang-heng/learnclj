@@ -31,7 +31,10 @@
                  ;;hadoop
                  [clojure-hadoop "1.4.1"]]
 
-  :profiles {:dev {:main learnclj.core}
+  :profiles {:dev {:main learnclj.core
+                   :dependencies [[storm "0.8.2"]]}
              :jar {:main learnclj.core}
              :uberjar {:main learnclj.core
-                       :aot :all}})
+                       :aot :all}}
+  :plugins [[lein2-eclipse "2.0.0"]]
+  :aot [cia-storm.wordcount])
