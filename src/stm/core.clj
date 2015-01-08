@@ -75,8 +75,6 @@
     (dotimes [n 100] (prn (getm cache (keyword (str n)))))))
 
 
-
-
 ;;java AtomicInteger 与性能 atom对比
 (def a (AtomicInteger. 0))
 (def b (atom 0))
@@ -107,18 +105,38 @@
 ;; 100000000
 ;;结果是AtomicInteger要强
 
-(def ag (agent 0))
-(deref ag)
-(send ag + 1 1 1 1)
-(send-off ag inc)
-(future
-  (do (Thread/sleep 3000)
-      (send ag inc)))
+(defn test-agent []
+  (def ag (agent 0))
+  (deref ag)
+  (send ag + 1 1 1 1)
+  (send-off ag inc)
 
-(send ag #(do (Thread/sleep 1000)
-                  (inc %)))
+  (do (send ag inc)
+      (await ag)
+      @ag))
 
-(do (send ag #(do (Thread/sleep 1000)
-                  (inc %)))
-    (await ag)
-    @ag)
+;;在agent的处理过程中产生异常
+;(send ag #(throw (Exception. "123")))
+
+
+;; ;;在外部判断异常存在
+;; (agent-errors ag)
+
+;; (deref ag)
+
+;; (clear-agent-errors ag)
+
+
+;; shit
+(defn agent-shit []
+  (let [ag (agent 0)]
+    (send ag (fn [_]
+               (do (Thread/sleep 100)
+                   (prn "饭前甜点")
+                   (throw (Exception. "123")))))
+    (when-not (agent-errors ag)
+      (prn "安全进入")
+      (send ag (fn [_]
+                 (do (Thread/sleep 200)
+                     (prn "被吃掉了")
+                     (throw (Exception. "222"))))))))

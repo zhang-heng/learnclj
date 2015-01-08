@@ -3,4 +3,4 @@
             [learnclj.core :refer :all]))
 
 (deftest test-1
-  (testing "fix me" (is (= "hello, a" (hello "a")))))
+  (testing "fix me" (is (= "hello, kay" (hello "kay")))))

@@ -1,4 +1,4 @@
-(ns learnclj.cljlib.text)
+(ns cljlib.text)
 
 (interleave "abc" "def")
 (str "abc" "def")

@@ -1,4 +1,4 @@
-(ns learnclj.cljlib.core)
+(ns cljlib.core)
 ;;clojure库的基本操作
 
 ;;函数声明
@@ -41,7 +41,7 @@
   (str a b c " " (apply str numbers)))
 
 ;;命名空间
-(learnclj.core/hello "you")
+(cljlib.core/greeting "you")
 
 ;;调用java方法
 (.toUpperCase "abc")
@@ -60,12 +60,12 @@
 
 (true? nil);false
 (nil? nil);true
-
-(when true
-  (do (prn 1)
-      (prn 2)
-      (prn 3)
-      :true))
+(defn do-fun []
+  (when true
+    (do (prn 1)
+        (prn 2)
+        (prn 3)
+        :true)))
 
 ;;循环,使用不多,序列库包含了功能性函数
 (loop [result []

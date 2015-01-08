@@ -1,4 +1,4 @@
-(ns learnclj.cljlib.collect)
+(ns cljlib.collect)
 
 ;;;;列表 区别于向量 在队首操作
 ;; clojure.lang.PersistentList
@@ -36,7 +36,7 @@
 (def col '(1 2 3 4 5))
 (def vect [1 2 3 4 5])
 (def hset #{1 2 3})
-(def amap {:a 1 :b 2})
+(def my-map {:a 1 :b 2})
 
 ;;;创建
 (list 1 2 3 4)
@@ -56,7 +56,7 @@
 (cons 0 col)
 (cons 0 vect)
 (cons 0 hset) ;会将集合转化为序列
-(cons [1 1] amap)
+(cons [1 1] my-map)
 ;;添加元素
 (conj col :a :b) ;列表在队首
 (into col [:a :b])
