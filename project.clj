@@ -3,7 +3,8 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [org.clojure/tools.logging "0.2.6"]
 
                  ;;json
                  [org.clojure/data.json "0.2.1"]
@@ -36,5 +37,4 @@
              :jar {:main learnclj.core}
              :uberjar {:main learnclj.core
                        :aot :all}}
-  :plugins [[lein2-eclipse "2.0.0"]]
-  :aot [cia-storm.wordcount])
+  :aot [learnclj.cia-storm])

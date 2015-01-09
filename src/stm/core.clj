@@ -133,10 +133,9 @@
     (send ag (fn [_]
                (do (Thread/sleep 100)
                    (prn "饭前甜点")
-                   (throw (Exception. "123")))))
+                   (throw (Exception. "异常1")))))
     (when-not (agent-errors ag)
       (prn "安全进入")
       (send ag (fn [_]
                  (do (Thread/sleep 200)
-                     (prn "被吃掉了")
-                     (throw (Exception. "222"))))))))
+                     (prn "被吃掉了")))))))
